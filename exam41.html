@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS기본 선택자</title>
+        <style>
+            /*일반구조 선택자*/
+            /* 형제 관계 중 첫번쩨 태그 선택하기*/
+
+            #test1 p:first-child{
+                background-color: orange;
+
+            }
+            /*형제 관계중 마지막 태그 선택하기*/
+            #test1 p:last-child{
+                background-color: tomato;
+                color: white;
+            }
+            /*형제 관계 중 n번째 위치한 태그 선택하기*/
+            #test1 p:nth-child(5n){
+                background: palegreen;
+                color: blue;
+            }
+
+            /*형제 태그중 첫번째 태그선택하기*/
+            #test2 p:first-of-type{
+                background-color: yellow;
+                color: olive;
+            }
+            #test2 p:first-of-type{
+                background-color: coral;
+                color: blue;
+
+            }
+            #test2 p:first-of-type(2n){
+                background-color: coral;
+                color: blue;
+            }
+            /*문단의 첫번째 줄 선택하기*/
+            #test3 p::first-line{
+                background: lightgoldenrodyellow;
+
+            }
+            /*각 태그 별 자동 번호 매김 처리하기*/
+            #test3 p{
+                counter-increment: (rint);
+            }
+            #test3 p::before{
+                counter:counter (rint);
+
+            }
+
+            /*태그 뒷 공간 선택하기*/
+
+            #test3 p:after{
+                content: "- by kjh Class";
+            }
+            /*드래그한 글자 색 변경하기*/
+            #test3 p::selection{
+            background-color: chocolate;
+            color: skyblue;
+            }
+
+            /*부정 선택자*/
+            #test4 p:not(:nth-child(3n)){
+                background-color: red;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS기본 선택자3</h1>
+        <hr>
+
+        <h2>일반 구조 선택자</h2>
+        <p>특정 위치에 있는 요소(태그)를 선택할 때 사용한다.</p>
+        <div id="test1">
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트6</p>
+        </div>
+        <h2>형태 구조 선택자</h2>
+        <p>특정 위치의 태그를 선택할 때 사용한다.</p>
+        <div id=test2>
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            <p>테스트6</p>
+        </div>
+        <h2>문자 석택자</h2>
+        <p>해당태그 내부의 특정 문자열을 선택하는 방법</p>
+        <div id="test3">
+            <p>
+                국회가 재적의원 과반수의 찬성으로 계엄의 해제를 요구한
+                때에는 대통령은 이를 해제 하여야 한다. 제1항의 지시를
+                받은 당해 행정기관은 이에 응하여야 한다.
+                대통령의 임기가 만료되는 태에는 임기 만료 70일내지 
+                40일 전에 후임자를 선거한다. 대법관은 대법원장의
+                제정으로 국회의 동의를 얻어 대통령이 임명한다.
+            </p>
+            <p>
+                국회가 재적의원 과반수의 찬성으로 계엄의 해제를 요구한
+                때에는 대통령은 이를 해제 하여야 한다. 제1항의 지시를
+                받은 당해 행정기관은 이에 응하여야 한다.
+                대통령의 임기가 만료되는 태에는 임기 만료 70일내지 
+                40일 전에 후임자를 선거한다. 대법관은 대법원장의
+                제정으로 국회의 동의를 얻어 대통령이 임명한다.
+            </p>
+            <p>
+                SQL은 관계형 데이터베이스에서 데이터 정의, 조작, 제어를 위해 사용하는 언어. 
+                관계형 데이터베이스를 유일하게 조작할 수 있는 유일한 언어이기 때문에 SQL은 데이터를 다루는 사람에게 
+                있어서는 가장 기본적인 언어
+                
+                관계형 데이터베이스는 메타데이터를 총괄 관리할 수 있기 때문에 데이터의 성격, 
+                속성 등을 체계화할 수 있고 데이터 표준화를 통해 데이터 품질 확보가 가능하다는 장점이 있다. 
+                또한 이상(Anomaly) 현상을 제거하고 데이터 중복을 피할 수 있으며 동시성과 병행 관리가 가능하기 
+                때문에 여러 명이 동시에 입력, 수정, 삭제 등 데이터를 공유하고 조작할 수 있다. 
+                그렇기 때문에 대부분의 기업들의 핵심 데이터는 모두 관게형 데이터베이스 구조로 저장
+
+                SQL을 다룰 때 가장 기본이 되는 몇 가지 명령어들을 정리
+
+                SELECT : 데이터베이스에 있는 데이터를 조회하거나 검색
+                ex)SELECT COLUMN1, COLUMN2 FROM TABLE1
+                
+                INSERT : 테이블에 새로운 행 또는 데이터를 추가
+                ex)INSERT INTO TABLE2 VALUES('데이터1', '데이터2', '데이터3', ,,,, )
+                
+                UPDATE : 테이블에 있는 행을 편집
+                ex)UPDATE TABLE1 SET 컬럼='바꿔줄값' WHERE 조건문
+                
+                DELETE : 테이블에서 행을 분리 혹은 삭제
+                ex)DELETE FROM TABLE 1 WEHRE 조건문
+                
+                CREATE : 새로운 데이터베이스 또는 테이블 생성
+
+                ALTER : 기존 데이터베이스 또는 테이블 변경
+
+                DROP : 데이터베이스 또는 테이블 삭제, ROLLBACK으로 복구 불가
+                
+                RENAME : 테이블 또는 컬럼명 재정의
+                ex)RENAME TABLE1 TO TABLE2
+                
+                TRUNCATE : 테이블 내용 모두 삭제
+                
+                COMMIT : 변경된 내용을 영구 적용
+                
+                ROLLBACK : 변경 이전 값으로 되돌림
+                
+                GRANT : 특정 권한 부여
+
+                REVOKE : 특정 권한 회수
+
+ 
+                *GRANT, REVOKE 명령어의 경우 사실 프로그래머보다는 관리자들이 사용하는 명령어이긴 함
+
+ 
+                JOIN : 2개 테이블에 대해 PK로 결합해 하나의 새로운 테이블 반환
+                *INNER JOIN - 교집합에 대해서만 조인
+                *OUTER JOIN - LEFT/RIGHT 좌측/우측 테이블 기준 전체에 대해 조인, 없는 값은 NULL값 처리
+                LEFT JOIN , LEFT JOIN 여러번 사용하기 및 중복제거
+
+            </p>
+
+
+        </div>
+
+        <hr>
+
+        <h2>부정 선택자</h2>
+        <p>선택한 요소를 제외한 나머지를 선택하는 선택자이다.</p>
+        <div id="test4">
+            <p>테스트1</p>
+            <p>테스트2</p>
+            <p>테스트3</p>
+            <p>테스트4</p>
+            <p>테스트5</p>
+            
+        </div>
+    </body>
+</html>
